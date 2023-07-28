@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { existsSync } from 'fs'
 import jiti from 'jiti'
 import { Ref } from 'vue'

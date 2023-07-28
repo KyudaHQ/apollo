@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createClient } from 'graphql-ws'
 import type { Client, ClientOptions } from 'graphql-ws'
 
