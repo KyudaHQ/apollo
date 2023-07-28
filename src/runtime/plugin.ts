@@ -74,7 +74,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
           if (!auth) { return }
 
-          return { [clientConfig.authHeader!]: auth }
+          return { [clientConfig.authHeader]: auth, headers: { [clientConfig.authHeader]: auth } };
         }
       })
 
