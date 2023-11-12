@@ -2,7 +2,7 @@
 
 import { existsSync } from 'fs'
 import jiti from 'jiti'
-import { Ref } from 'vue'
+import type { Ref } from 'vue'
 import { defu } from 'defu'
 import { useLogger, addPlugin, addImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import GraphQLPlugin from '@rollup/plugin-graphql'
@@ -103,7 +103,7 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
       ].join('\n')
     })
 
-    nuxt.options.alias['#apollo'] = addTemplate({
+    addTemplate({
       filename: 'apollo.mjs',
       getContents: () => [
         'export default {',
@@ -113,7 +113,9 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
         ` clients: ${JSON.stringify(clients)}`,
         '}'
       ].join('\n')
-    }).dst
+    })
+
+    nuxt.options.alias['#apollo'] = resolve(nuxt.options.buildDir, 'apollo')
 
     addPlugin(resolve('runtime/plugin'))
 
